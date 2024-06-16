@@ -34,7 +34,7 @@ def listen_and_respond(after_prompt=True):
     
     Args:
     after_prompt: bool, whether the response comes directly
-    after the user says "Hey, Jarvis!" or not
+    after the user says "Hey, Higgins!" or not
     
     """
     # Default is don't start listening, until I tell you to
@@ -43,11 +43,11 @@ def listen_and_respond(after_prompt=True):
     with microphone as source:
         if after_prompt:
             recognizer.adjust_for_ambient_noise(source)
-            print("Say 'Hey, Jarvis!' to start")
+            print("Say 'Hey, Higgins!' to start")
             audio = recognizer.listen(source, phrase_time_limit=5)
             try:
                 transcription = recognizer.recognize_google(audio)
-                if transcription.lower() == "hey jarvis":
+                if transcription.lower() == "hey higgins":
                     start_listening = True
                 else:
                     start_listening = False
@@ -106,7 +106,7 @@ first_question = True
 # Initialize last_question_time to current time
 last_question_time = time.time()
 
-# Set threshold for time elapsed before requiring "Hey, Jarvis!" again
+# Set threshold for time elapsed before requiring "Hey, Higgins!" again
 threshold = 60 # 1 minute
 
 while True:
@@ -117,4 +117,4 @@ while True:
         listen_and_respond(after_prompt=False)
 
 # Can run in terminal with following command to suppress warnings:
-# python jarvis.py 2>/dev/null
+# python higgins.py 2>/dev/null
