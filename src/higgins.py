@@ -11,6 +11,7 @@ from email.mime.text import MIMEText
 def send_email(subject, body, to_email):
     from_email = os.getenv('EMAIL_ADDRESS')
     from_password = os.getenv('EMAIL_PASSWORD')
+    to_email = os.getenv('RECIPIENT_EMAIL')
     
     msg = MIMEMultipart()
     msg['From'] = from_email
